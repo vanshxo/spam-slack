@@ -1,0 +1,10 @@
+artifacts_root: artifacts
+
+stage_01:
+  root_dir: artifacts/data
+  raw_data: artifacts/data/raw
+  source_url: 'https://drive.google.com/file/d/1NWpTUUu9H1ukJ2n71lJnrGPdQQC-b_88/view?usp=sharing'
+  zip_data: artifacts/data/raw/data.zip
+  unzipped: artifacts/data/raw/mails/
+  untarred: artifacts/data/extracted/
+  numpytext: artifacts/data/numpy_text/
