@@ -8,3 +8,8 @@ stage_01:
   unzipped: artifacts/data/raw/mails/
   untarred: artifacts/data/extracted/
   numpytext: artifacts/data/numpy_text/
+
+stage_02:
+  root_dir: artifacts/data
+  npy_data: artifacts/data/numpy_text/
+  processed_data: artifacts/data/processed/

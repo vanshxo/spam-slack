@@ -13,3 +13,11 @@ class data_ingestion:
     untarred:Path
     numpytext:Path
 
+@dataclass(frozen=True)
+class processing:
+    root_dir:Path
+    npy_data:Path
+    processed_data:Path
+    lemmatizing:bool
+
+

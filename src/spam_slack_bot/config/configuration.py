@@ -1,6 +1,6 @@
 from spam_slack_bot.constants import *
 from spam_slack_bot.utils.common import *
-from spam_slack_bot.entity.config import data_ingestion
+from spam_slack_bot.entity.config import data_ingestion,processing
 class manager:
     def __init__(self):
         self.config=readYaml(CONFIG_FILE_PATH)
@@ -17,4 +17,13 @@ class manager:
                               untarred=self.data_config.untarred,
                               numpytext=self.data_config.numpytext
                               )
+    def preprocessing_conf(self)->processing:
+        self.preprocessing_config=self.config.stage_02
+        return processing(root_dir=self.preprocessing_config.root_dir,
+                          npy_data=self.preprocessing_config.npy_data,
+                          processed_data=self.preprocessing_config.processed_data,
+                          lemmatizing=self.params.lemmatizing
+                          )
+
+
 
