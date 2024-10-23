@@ -13,3 +13,10 @@ stage_02:
   root_dir: artifacts/data
   npy_data: artifacts/data/numpy_text/
   processed_data: artifacts/data/processed/
+
+stage_03:
+  root_dir: artifacts/models/
+  training_data_spam: artifacts/data/processed/spam.npy
+  training_data_ham: artifacts/data/processed/ham.npy
+
+

@@ -1,1 +1,10 @@
 lemmatizing: True
+test_size: 0.2
+random_state: 42
+max_features: 8000
+stop_words: 'english'
+max_df: 0.9
+min_df: 2
+kernel: 'linear'
+C: 1
+class_weight: 'balanced'

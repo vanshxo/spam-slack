@@ -21,3 +21,21 @@ class processing:
     lemmatizing:bool
 
 
+@dataclass(frozen=True)
+class training:
+    root_dir:Path
+    training_data_spam:Path
+    training_data_ham:Path
+    test_size:float
+    random_state:int
+    max_features:int
+    stop_words:str
+    max_df:float
+    min_df:float
+    kernel:str
+    C:float
+    class_weight:str
+
+
+
+

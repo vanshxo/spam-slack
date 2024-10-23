@@ -1,6 +1,7 @@
 from spam_slack_bot.constants import *
 from spam_slack_bot.utils.common import *
-from spam_slack_bot.entity.config import data_ingestion,processing
+from spam_slack_bot.entity.config import data_ingestion,processing,training
+
 class manager:
     def __init__(self):
         self.config=readYaml(CONFIG_FILE_PATH)
@@ -24,6 +25,22 @@ class manager:
                           processed_data=self.preprocessing_config.processed_data,
                           lemmatizing=self.params.lemmatizing
                           )
+    
+    def training_conf(self)->training:
+        self.training_config=self.config.stage_03
+        return training(root_dir=self.training_config.root_dir,
+                        training_data_spam=self.training_config.training_data_spam,
+                        training_data_ham=self.training_config.training_data_ham,
+                        test_size=self.params.test_size,
+                        random_state=self.params.random_state,
+                        stop_words=self.params.stop_words,
+                        max_df=self.params.max_df,
+                        min_df=self.params.min_df,
+                        kernel=self.params.kernel,
+                        C=self.params.C,
+                        class_weight=self.params.class_weight,
+                        max_features=self.params.max_features)
+
 
 
 
