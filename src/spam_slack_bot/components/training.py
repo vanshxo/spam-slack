@@ -27,7 +27,7 @@ class training_stage:
         X,y=self.get_data()
         print(f"shape of X:{X.shape} y:{y.shape}")
         X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=self.config.test_size,stratify=y,random_state=self.config.random_state)
-        tfidf_vectorizer = TfidfVectorizer(
+        self.tfidf_vectorizer = TfidfVectorizer(
         max_features=self.config.max_features,        # Increase feature space to cover more word variety
         ngram_range=(1,3),       # Capture unigrams, bigrams, and trigrams for context
         stop_words=self.config.stop_words,     # Remove common English stop words
@@ -35,8 +35,8 @@ class training_stage:
         min_df=self.config.min_df  
                                    # Ignore terms that appear in fewer than 2 documents (too rare)
 )
-        X_train_tfidf = tfidf_vectorizer.fit_transform(X_train)
-        X_test_tfidf = tfidf_vectorizer.transform(X_test)
+        X_train_tfidf = self.tfidf_vectorizer.fit_transform(X_train)
+        X_test_tfidf = self.tfidf_vectorizer.transform(X_test)
         return X_train_tfidf,X_test_tfidf,y_train,y_test
     
     def fitting(self):
@@ -48,6 +48,7 @@ class training_stage:
         print(classification_report(y_test, y_pred, target_names=['ham', 'spam']))  
 
         joblib.dump(svm_model,self.config.root_dir+'svm_model.joblib')
+        joblib.dump(self.tfidf_vectorizer,self.config.root_dir+'tfidf_vectorizer.joblib')
         logger.info("Trained model is saved!!!")
 
 

@@ -24,3 +24,4 @@ logs/
 notebooks/
 **/__pycache__/
 artifacts/
+*.env.sh

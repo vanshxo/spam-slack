@@ -1,6 +1,6 @@
 from spam_slack_bot.constants import *
 from spam_slack_bot.utils.common import *
-from spam_slack_bot.entity.config import data_ingestion,processing,training
+from spam_slack_bot.entity.config import data_ingestion,processing,training,predict
 
 class manager:
     def __init__(self):
@@ -40,6 +40,13 @@ class manager:
                         C=self.params.C,
                         class_weight=self.params.class_weight,
                         max_features=self.params.max_features)
+    
+    def prediction_conf(self)->predict:
+        self.predict_config=self.config.stage_04
+        return predict(root_dir=self.predict_config.root_dir,
+                       model_path=self.predict_config.model_path,
+                       tfidf_vectorizer=self.predict_config.tfidf_vectorizer
+        )
 
 
 

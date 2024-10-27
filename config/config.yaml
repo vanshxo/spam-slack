@@ -19,4 +19,7 @@ stage_03:
   training_data_spam: artifacts/data/processed/spam.npy
   training_data_ham: artifacts/data/processed/ham.npy
 
-
+stage_04:
+  root_dir: artifacts/models/
+  model_path: artifacts/models/svm_model.joblib
+  tfidf_vectorizer: artifacts/models/tfidf_vectorizer.joblib

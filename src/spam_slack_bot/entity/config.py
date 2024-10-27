@@ -37,5 +37,13 @@ class training:
     class_weight:str
 
 
+@dataclass(frozen=True)
+class predict:
+    root_dir: Path
+    model_path: Path
+    tfidf_vectorizer: Path
+
+
+
 
 
